@@ -1,4 +1,4 @@
-from jegyfoglalas import JegyFoglalas
+from jegyfoglalas import *
 
 class LegiTarsasag:
     def __init__(self, nev):
@@ -15,7 +15,7 @@ class LegiTarsasag:
             foglalas = JegyFoglalas(jarat, utas_neve)
             self.foglalasok.append(foglalas)
             return foglalas
-        return None
+        return "Nincs ilyen járat."
 
     def _get_jarat_by_jaratszam(self, jaratszam):
         for jarat in self.jaratok:
@@ -34,3 +34,9 @@ class LegiTarsasag:
         if not self.foglalasok:
             return "Nincsenek aktív foglalások."
         return "\n".join(str(foglalas) for foglalas in self.foglalasok)
+    
+    def __str__(self):
+        jaratok = ''
+        for i in range(len(self.jaratok)):
+            jaratok += f'{self.jaratok[i]}\n'
+        return f'{self.nev}:\n{jaratok}'

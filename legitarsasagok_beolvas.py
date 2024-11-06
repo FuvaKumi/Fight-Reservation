@@ -1,15 +1,14 @@
 import pandas as pd
 import os
 
-from legitarsasag import LegiTarsasag
-from belfoldi_jarat import BelfoldiJarat
-from nemzetkozi_jarat import NemzetkoziJarat
+from legitarsasag import *
+from belfoldi_jarat import *
+from nemzetkozi_jarat import *
 
 def legitarsasagok_beovas(mappa):
     legitarsasagok = []
     for fajlnev in os.listdir(mappa):
         if fajlnev.endswith('.xlsx'):
-            print(f'{mappa}/{fajlnev}')
             legitarsasag_nev = fajlnev.replace('.xlsx', '')
             legitarsasagok.append(LegiTarsasag(legitarsasag_nev))
             df = pd.read_excel(f'{mappa}/{fajlnev}')

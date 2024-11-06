@@ -1,4 +1,4 @@
-from jarat import Jarat
+from jarat import *
 
 class BelfoldiJarat(Jarat):
     def __init__(self, jaratszam, celallomas, jegyar):
@@ -6,3 +6,6 @@ class BelfoldiJarat(Jarat):
 
     def __str__(self):
         return f"Belföldi járat {self.jaratszam} - {self.celallomas}, Jegyár: {self.jegyar} Ft"
+    
+    def __repr__(self):
+        return str(self)
