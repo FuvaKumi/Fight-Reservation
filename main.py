@@ -68,8 +68,12 @@ def main():
             print("Aktuális foglalások:")
             for i in range(len(tarsasagok)):
                 print(f'{tarsasagok[i].nev}:\n- {tarsasagok[i].listaz_foglalasok()}')
-        
+
         elif valasztas == "4":
+            print("Foglalások mentése...")
+                
+        
+        elif valasztas == "5":
             print("Kilépés...")
             break
         
