@@ -2,6 +2,9 @@ from legitarsasag import *
 from belfoldi_jarat import *
 from nemzetkozi_jarat import *
 from legitarsasagok_beolvas import *
+from foglalasok_beolvas import *
+
+
 
 def menu():
     print("1. Jegy foglalása")
@@ -9,7 +12,7 @@ def menu():
     print("3. Foglalások listázása")
     print("4. Kilépés")
 
-def jarat_input(tarsasagok):
+def jarat_input(tarsasagok: list[LegiTarsasag]):
     for i in range(len(tarsasagok)):
         print(F'{i + 1}. {tarsasagok[i].nev}')
     while True:
@@ -23,16 +26,26 @@ def jarat_input(tarsasagok):
         except:
             print("Érvénytelen társaság szám!")
 
-    print(tarsasagok[tarsasag])
-    jaratszam = input("Add meg a járatszámot: ")
+    while True:
+        print(tarsasagok[tarsasag])
+        jaratszam = input("Add meg a járatszámot: ")
+        jarat = tarsasagok[tarsasag]._get_jarat_by_jaratszam(jaratszam)
+        if jarat:
+            break
+        else:
+            print("Hibás járatszám.")
         
     utas_neve = input("Add meg az utas nevét: ")
 
-    return tarsasag, jaratszam, utas_neve
+    return tarsasag, jarat, utas_neve
 
 def main():
-    # Légitársaságok beolvasása
+    os.system('cls')
+    # Légitársaságok és Foglalások beolvasása
+    tarsasagok: list[LegiTarsasag]
     tarsasagok = legitarsasagok_beovas('./Légitársaságok')
+    foglalasok: list[JegyFoglalas]
+    foglalasok = foglalasok_beolvas(tarsasagok, './Foglalások/Foglalasok.xlsx')
     
     
     while True:
@@ -40,15 +53,15 @@ def main():
         valasztas = input("Válassz egy műveletet: ")
         
         if valasztas == "1":
-            tarsasag, jaratszam, utas_neve = jarat_input(tarsasagok)
+            tarsasag, jarat, utas_neve = jarat_input(tarsasagok)
             
-            eredmeny = tarsasagok[tarsasag].foglalas(jaratszam, utas_neve)
+            eredmeny = tarsasagok[tarsasag].foglalas(jarat, utas_neve)
             print(eredmeny)
         
         elif valasztas == "2":
-            tarsasag, jaratszam, utas_neve = jarat_input(tarsasagok)
+            tarsasag, jarat, utas_neve = jarat_input(tarsasagok)
 
-            eredmeny = tarsasagok[tarsasag].lemondas(jaratszam, utas_neve)
+            eredmeny = tarsasagok[tarsasag].lemondas(jarat, utas_neve)
             print(eredmeny)
         
         elif valasztas == "3":
