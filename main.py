@@ -67,7 +67,7 @@ def main():
         elif valasztas == "3":
             print("Aktuális foglalások:")
             for i in range(len(tarsasagok)):
-                print(f'{tarsasagok[i].nev}:\n{tarsasagok[i].listaz_foglalasok()}')
+                print(f'{tarsasagok[i].nev}:\n- {tarsasagok[i].listaz_foglalasok()}')
         
         elif valasztas == "4":
             print("Kilépés...")

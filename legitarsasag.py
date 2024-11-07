@@ -36,11 +36,11 @@ class LegiTarsasag:
     def listaz_foglalasok(self):
         if not self.foglalasok:
             return "Nincsenek aktív foglalások."
-        return "\n".join(str(foglalas) for foglalas in self.foglalasok)
+        return "\n- ".join(str(foglalas) for foglalas in self.foglalasok)
     
     def __str__(self):
         jaratok = ''
         for i in range(len(self.jaratok)):
-            jaratok += f'{self.jaratok[i]}\n'
+            jaratok += f'-  {self.jaratok[i]}\n'
         return f'{self.nev}:\n{jaratok}'
     
