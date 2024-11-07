@@ -10,15 +10,6 @@ def foglalasok_beolvas(tarsasagok: list[LegiTarsasag], foglalasok_file: str):
     foglalasok = list[JegyFoglalas]
     df = pd.read_excel(foglalasok_file)
     tarsasagnevek = list([LegiTarsasag.nev for LegiTarsasag in tarsasagok])
-    #for i in range(len(tarsasagok)):
-    #    for j in df.index:
-    #        if df['Társaság'][j] == tarsasagok[i].nev and df['Társaság'][j] in tarsasagnevek:
-    #            if tarsasagok[i]._get_jarat_by_jaratszam(df['Járat'][j]):
-    #                tarsasagok[i].foglalas(tarsasagok[i]._get_jarat_by_jaratszam(df['Járat'][j]), df['Név'][j])
-    #            else:
-    #                print(f'    Hiba ({j + 1}. sor): Nem található ilyen járat a {tarsasagok[i].nev} társaságnál!')
-    #        else:
-    #            print(f'    Hiba ({j + 1}. sor): Nem található ilyen légitársaság!')
 
     for i in df.index:
         if df['Társaság'][i] in tarsasagnevek:
