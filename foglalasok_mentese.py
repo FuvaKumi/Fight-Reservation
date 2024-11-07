@@ -1,4 +1,5 @@
 from legitarsasag import LegiTarsasag
+from jegyfoglalas import JegyFoglalas
 import pandas as pd
 
 def foglalasok_mentese(tarsasagok: list[LegiTarsasag], mappa: str):
@@ -10,6 +11,7 @@ def foglalasok_mentese(tarsasagok: list[LegiTarsasag], mappa: str):
     }
 
     for tarsasag in tarsasagok:
+        foglalas: JegyFoglalas
         for foglalas in tarsasag.foglalasok:
             data['Társaság'].append(tarsasag.nev)
             data['Járat'].append(foglalas.jarat.jaratszam)

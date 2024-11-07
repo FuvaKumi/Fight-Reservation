@@ -7,7 +7,7 @@ class JegyFoglalas:
         self.ar = jarat.jegyar
 
     def __str__(self):
-        return f"Foglalás: {self.utas_neve} - {self.jarat.jaratszam} ({self.jarat.celallomas}), Ár: {self.ar} Ft"
+        return f"Foglalás: {self.utas_neve} - {self.jarat.jaratszam} ({self.jarat.felszallas} - {self.jarat.celallomas}) - {self.jarat.datum}, Ár: {self.ar} Ft"
     
     def __repr__(self) -> str:
         return str(self)

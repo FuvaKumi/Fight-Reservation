@@ -14,7 +14,11 @@ def legitarsasagok_beovas(mappa: str):
             legitarsasagok.append(LegiTarsasag(legitarsasag_nev))
             df = pd.read_excel(f'{mappa}/{fajlnev}')
             for index in df.index:
-                legitarsasagok[-1].add_jarat(BelfoldiJarat(df['ID'][index], df['Cel'][index], df['Ar'][index]) if df['Jarat'][index] == 'B' else NemzetkoziJarat(df['ID'][index], df['Cel'][index], df['Ar'][index]))
+                legitarsasagok[-1].add_jarat(BelfoldiJarat(
+                    df['ID'][index], df['Start'][index], df['Cel'][index], df['Ar'][index], df['Datum'][index]
+                    ) if df['Jarat'][index] == 'B' else NemzetkoziJarat(
+                        df['ID'][index], df['Start'][index], df['Cel'][index], df['Ar'][index], df['Datum'][index]
+                        ))
     
     print('Légitársaságok beolvasva!')
     return legitarsasagok

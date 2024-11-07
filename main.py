@@ -3,6 +3,7 @@ from belfoldi_jarat import *
 from nemzetkozi_jarat import *
 from legitarsasagok_beolvas import *
 from foglalasok_beolvas import *
+from foglalasok_mentese import *
 
 
 
@@ -10,7 +11,8 @@ def menu():
     print("1. Jegy foglalása")
     print("2. Foglalás lemondása")
     print("3. Foglalások listázása")
-    print("4. Kilépés")
+    print("4. Foglalások véglegesítése")
+    print("5. Kilépés")
 
 def jarat_input(tarsasagok: list[LegiTarsasag]):
     for i in range(len(tarsasagok)):
@@ -44,8 +46,7 @@ def main():
     # Légitársaságok és Foglalások beolvasása
     tarsasagok: list[LegiTarsasag]
     tarsasagok = legitarsasagok_beovas('./Légitársaságok')
-    foglalasok: list[JegyFoglalas]
-    foglalasok = foglalasok_beolvas(tarsasagok, './Foglalások/Foglalasok.xlsx')
+    foglalasok_beolvas(tarsasagok, './Foglalások/Foglalasok.xlsx')
     
     
     while True:
@@ -71,6 +72,7 @@ def main():
 
         elif valasztas == "4":
             print("Foglalások mentése...")
+            foglalasok_mentese(tarsasagok, './Foglalások/Foglalasok.xlsx')
                 
         
         elif valasztas == "5":
